@@ -4,6 +4,7 @@ import bot.inker.dowhat.entity.BatteryInfo;
 import bot.inker.dowhat.entity.PostRequest;
 import bot.inker.dowhat.entity.WindowEntry;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
@@ -69,7 +70,7 @@ public final class DataManager {
     }
 
     public List<WindowEntry> windows() {
-      return windows;
+      return windows == null ? Collections.emptyList() : windows;
     }
   }
 }

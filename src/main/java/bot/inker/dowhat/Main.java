@@ -99,7 +99,6 @@ public final class Main {
   public static void main(String[] args) {
     getDataManager("MacBook");
     getDataManager("Windows");
-    getDataManager("Android");
 
     ResourceHandler resourceHandler = new ResourceHandler(new ClassPathResourceManager(
       Main.class.getClassLoader(), "public"
