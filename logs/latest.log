@@ -1,0 +1,4 @@
+[12:04:19] [main/INFO] [io.undertow]: starting server: Undertow - 2.3.18.Final
+[12:04:19] [main/INFO] [org.xnio]: XNIO version 3.8.16.Final
+[12:04:19] [main/INFO] [org.xnio.nio]: XNIO NIO Implementation Version 3.8.16.Final
+[12:04:19] [main/INFO] [org.jboss.threads]: JBoss Threads version 3.5.0.Final
