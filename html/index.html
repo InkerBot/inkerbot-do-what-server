@@ -1,18 +1,71 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/src/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#7C4DFF" />
     <title>瓶子在做什么？</title>
-    <link rel="stylesheet" href="./src/style.css">
+    
+    <!-- 所有依赖通过Vite管理，移除Import Map和CDN链接 -->
+    
+    <!-- 主题切换脚本 -->
+    <script>
+      // Check for user preference and set theme
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    </script>
   </head>
   <body>
-    <div id="app">
-      <h1>InkerBot 正在做什么？</h1>
-      <div id="devices">
-        <!-- 设备状态将在此处显示 -->
-      </div>
+    <div class="app-container">
+      <header>
+        <div class="header-content">
+          <!-- 应用图标和名称 -->
+          <div class="app-logo">
+            <span class="material-icons">devices_other</span>
+          </div>
+          <div class="app-title">
+            <h1>InkerBot</h1>
+            <span>正在做什么？</span>
+          </div>
+        </div>
+        
+        <md-icon-button id="theme-toggle" class="theme-toggle">
+          <span class="material-icons">dark_mode</span>
+        </md-icon-button>
+      </header>
+      
+      <main>
+        <div class="content-container">
+          <div id="loading-indicator" class="loading-state">
+            <md-circular-progress indeterminate></md-circular-progress>
+            <p>正在获取设备信息...</p>
+          </div>
+          
+          <div id="error-message" class="error-message hidden">
+            <span class="material-icons">error_outline</span>
+            <p>无法加载设备数据，请检查网络连接</p>
+            <md-text-button id="retry-button">重试</md-text-button>
+          </div>
+          
+          <div id="devices-container">
+            <!-- 设备卡片将在此动态生成 -->
+          </div>
+        </div>
+      </main>
+      
+      <footer>
+        <div class="footer-content">
+          <p>
+            <span class="material-icons">schedule</span>
+            最后更新: <span id="last-updated">-</span>
+          </p>
+          <p>© InkerBot • 设备活动监控</p>
+        </div>
+      </footer>
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>

@@ -12,6 +12,7 @@ import io.undertow.server.RoutingHandler;
 import io.undertow.server.handlers.resource.ClassPathResourceManager;
 import io.undertow.server.handlers.resource.ResourceHandler;
 import io.undertow.util.Headers;
+import io.undertow.util.HttpString;
 import io.undertow.util.PathTemplateMatch;
 import io.undertow.util.StatusCodes;
 import org.apache.logging.log4j.Level;
@@ -181,6 +182,7 @@ public final class Main {
     Undertow.builder()
       .addHttpListener(8001, "0.0.0.0")
       .setHandler(exchange -> {
+        exchange.getResponseHeaders().put(HttpString.tryFromString("Access-Control-Allow-Origin"), "*");
         if (exchange.getRequestPath().startsWith("/cgi-bin/")) {
           routingHandler.handleRequest(exchange);
         } else {
